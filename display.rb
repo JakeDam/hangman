@@ -1,8 +1,8 @@
 module Display 
 
-  def display_word(word)
-    len = word.length
-    len.times { print "_ "}
+  def display_word(letters)
+    letters.each { |letter| print "#{letter} " }
+    print "\n"
   end
 
   def get_guess
