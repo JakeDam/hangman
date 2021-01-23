@@ -47,6 +47,13 @@ class Game
     end
   end
 
+  def check_win 
+    if @display_letters.include?("_") == true
+      puts "Congrats! You guessed the word!"
+      #TO DO Game over method?
+    end
+  end
+
 
 
 end
