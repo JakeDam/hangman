@@ -30,6 +30,23 @@ class Game
   letter
   end
 
+  def check_letter(letter)
+    if @secret_word.include?(letter) == true
+      correct_indicies = []
+      puts "Good guess!"
+      @guessed_letters << letter
+      @secret_word.each_with_index do |word_letter, index|
+        if word_letter == letter
+          correct_indicies << index
+        end
+      end
+      correct_indicies.each { |index| @display_letters[index] == letter }
+    else  
+      puts "Oof, guess again!"
+      @incorrect_letters << letter
+    end
+  end
+
 
 
 end
