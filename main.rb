@@ -2,9 +2,14 @@ require_relative 'display.rb'
 require_relative 'game.rb'
 include Display
 
-words = File.readlines('5desk.txt')
+def new_game
+  words = File.readlines('5desk.txt')
+  game = Game.new(words)
+  game.choose_word
+  p game.secret_word
+  p game.display_letters
+  game.play
+end
 
-test = Game.new(words)
-test.choose_word
-display_word(test.display_letters)
+new_game
 
