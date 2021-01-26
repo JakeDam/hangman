@@ -11,9 +11,9 @@ class Game
 
   def choose_word
     while word = @words.sample
-      if word.length > 4 && word.length < 13
+      if word.length > 4 && word.length < 13 
         @secret_word = word.downcase.chomp.split("")
-        word.length.times { @display_letters << "_" }
+        word.chomp.length.times { @display_letters << "_" }
         break
       end
     end
@@ -25,6 +25,7 @@ class Game
         puts "You've already guessed that letter!"
       else  
         @guessed_letters << letter
+        break
       end
     end
   letter
@@ -34,13 +35,12 @@ class Game
     if @secret_word.include?(letter) == true
       correct_indicies = []
       puts "Good guess!"
-      @guessed_letters << letter
       @secret_word.each_with_index do |word_letter, index|
         if word_letter == letter
           correct_indicies << index
         end
       end
-      correct_indicies.each { |index| @display_letters[index] == letter }
+      correct_indicies.map { |index| @display_letters[index] = letter }
     else  
       puts "Oof, guess again!"
       @incorrect_letters << letter
@@ -48,11 +48,25 @@ class Game
   end
 
   def check_win 
-    if @display_letters.include?("_") == true
+    if @display_letters.include?("_") == false
       puts "Congrats! You guessed the word!"
       #TO DO Game over method?
     end
   end
+
+  def play
+    while @guesses > 0
+      if @incorrect_letters.empty? == false
+        display_incorrect_letters(@incorrect_letters)
+      end
+      letter = guess_letter
+      check_letter(letter)
+      display_word(@display_letters)
+      check_win
+    end
+  end
+
+
 
  
 
