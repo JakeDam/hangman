@@ -15,10 +15,11 @@ class Game
 
   def choose_word
     while (word = @words.sample)
-      if word.length > 4 && word.length < 13 
-        @secret_word = word.downcase.chomp.split('')
-        word.chomp.length.times { @display_letters << '_' }
-      end
+      next unless word.length > 4 && word.length < 13
+
+      @secret_word = word.downcase.chomp.split('')
+      word.chomp.length.times { @display_letters << '_' }
+      break
     end
   end
 
