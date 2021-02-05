@@ -49,11 +49,30 @@ class Game
     end
   end
 
-  def check_win
-    if @display_letters.include?('_') == false
-      puts 'Congrats! You guessed the word!'
-      # TO DO Game over method?
+  def quit_game
+    puts 'Thanks for playing!'
+    exit
+  end
+
+  def game_over
+    while (input = gets.chomp.downcase)
+      case input
+      when 'y'
+        new_game
+      when 'n'
+        quit_game
+      else
+        puts 'Please enter Y or N'
+      end
     end
+  end
+
+  def check_win
+    return unless @display_letters.include?('_') == false
+
+    puts 'Congrats! You guessed the word!'
+    puts 'Play again? (Y/N)'
+    game_over
   end
 
   def play
