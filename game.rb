@@ -44,8 +44,8 @@ class Game
       end
       correct_indicies.map { |index| @display_letters[index] = letter }
     else
-      puts 'Oof, guess again!'
       @incorrect_letters << letter
+      puts 'Oof, guess again!'
     end
   end
 

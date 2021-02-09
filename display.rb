@@ -9,7 +9,6 @@ module Display
 
   def display_incorrect_letters(incorrect_letters)
     print "Incorrect Letters: #{display_word(incorrect_letters)}"
-    print "\n"
   end
 
   def get_guess
