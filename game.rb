@@ -46,6 +46,7 @@ class Game
     else
       @incorrect_letters << letter
       puts 'Oof, guess again!'
+      @guesses -= 1
     end
   end
 
