@@ -24,7 +24,7 @@ class Game
   end
 
   def guess_letter
-    while (letter = get_guess)
+    while (letter = player_guess)
       if @guessed_letters.include?(letter)
         puts "You've already guessed that letter!"
       else

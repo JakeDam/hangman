@@ -8,7 +8,7 @@ module Display
   end
 
   def print_word(secret_word)
-    secret_word.each { |letter| print "#{letter}" }
+    secret_word.each { |letter| print letter }
     print "\n"
   end
 
@@ -19,7 +19,7 @@ module Display
     puts guesses
   end
 
-  def get_guess
+  def player_guess
     puts 'Enter a letter to guess: '
     while (guess = gets.chomp.downcase)
       if guess !~ /^[a-z]*$/
