@@ -7,9 +7,16 @@ module Display
     print "\n"
   end
 
-  def display_incorrect_letters(incorrect_letters)
+  def print_word(secret_word)
+    secret_word.each { |letter| print "#{letter}" }
+    print "\n"
+  end
+
+  def display_incorrect_letters(incorrect_letters, guesses)
     print 'Incorrect Letters: '
     display_word(incorrect_letters)
+    print 'Incorrect Guesses Remaining: '
+    puts guesses
   end
 
   def get_guess
@@ -25,4 +32,17 @@ module Display
     end
     guess
   end
+end
+
+def starting_message
+  puts "Let's play Hangman!"
+  puts 'Choose letters to guess the secret word and WIN'
+  puts 'If you guess 10 incorrect letters, you LOSE'
+  puts "Let's begin!"
+  print "\n"
+end
+
+def wait
+  sleep(0.5)
+  print "\n"
 end

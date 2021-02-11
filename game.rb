@@ -76,13 +76,24 @@ class Game
     game_over
   end
 
+  def loss
+    puts 'Oh no! You failed to guess the word!'
+    print 'Secret word was: '
+    print_word(@secret_word)
+    puts 'Play again? (Y/N)'
+    game_over
+  end
+
   def play
+    starting_message
     while @guesses.positive?
-      display_incorrect_letters(@incorrect_letters) if @incorrect_letters.empty? == false
+      display_incorrect_letters(@incorrect_letters, @guesses) if @incorrect_letters.empty? == false
       letter = guess_letter
+      wait
       check_letter(letter)
       display_word(@display_letters)
       check_win
     end
+    loss
   end
 end
