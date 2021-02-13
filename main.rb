@@ -12,6 +12,7 @@ def new_game
 end
 
 def save_game(game)
+  puts 'Enter filename to save game: '
   YAML.dump(game)
 end
 
