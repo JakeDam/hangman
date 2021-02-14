@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'display'
+require_relative 'interface'
 require_relative 'game'
 require 'yaml'
 
@@ -12,8 +12,11 @@ def new_game
 end
 
 def save_game(game)
-  puts 'Enter filename to save game: '
-  YAML.dump(game)
+  filename = prompt_save
+  return false unless filename
+
+  searialized = YAML.dump(game)
+  File.open("saved_games/#{filename}.yaml", 'w') { |file| file.write searialized }
 end
 
 new_game

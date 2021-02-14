@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Module handles display of most game info to user
+# Module handles interfacing with the user
 module Display
   def display_word(letters)
     letters.each { |letter| print "#{letter} " }
@@ -47,6 +47,19 @@ def wait
   print "\n"
 end
 
-def prompt_save_name
-  puts 'Enter filename to save game: '
+def prompt_save
+  begin
+    filenames = Dir.entries('saved_games')
+    puts 'Enter savefile name: '
+    filename = gets.chomp
+    raise "#{filename} already exists." if filenames.include?(filename)
+  rescue StandardError
+    puts "Overwrite savefile #{filename}? (Y/N)"
+    input = gets.chomp.downcase
+    until %w[y n].include?(input)
+      puts 'Please enter Y (yes) or N (no).'
+      input = gets.chomp.downcase
+    end
+  end
+  input == 'y' ? filename : nil
 end
