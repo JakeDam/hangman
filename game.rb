@@ -85,7 +85,7 @@ class Game
   end
 
   def play
-    starting_message
+    puts 'Type "save" at anytime to save your game and quit'
     while @guesses.positive?
       display_incorrect_letters(@incorrect_letters, @guesses) if @incorrect_letters.empty? == false
       letter = guess_letter

@@ -34,14 +34,6 @@ module Display
   end
 end
 
-def starting_message
-  puts "Let's play Hangman!"
-  puts 'Choose letters to guess the secret word and WIN'
-  puts 'If you guess 10 incorrect letters, you LOSE'
-  puts "Let's begin!"
-  print "\n"
-end
-
 def wait
   sleep(0.5)
   print "\n"
@@ -63,3 +55,16 @@ def prompt_save
   end
   input == 'y' ? filename : nil
 end
+
+def prompt_load
+  puts 'Enter the name of a savefile from the list below to load the game'
+  filenames = Dir.entries('saved_games')
+  puts filenames
+  filename = gets.chomp
+  raise "#{filename} not found. Please enter valid filename to load" unless filenames.include?(filename)
+
+  puts 'Loading game...'
+rescue StandardError
+  retry
+end
+
