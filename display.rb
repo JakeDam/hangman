@@ -46,3 +46,7 @@ def wait
   sleep(0.5)
   print "\n"
 end
+
+def prompt_save_name
+  puts 'Enter filename to save game: '
+end
