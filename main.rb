@@ -10,22 +10,6 @@ def starting_message
   puts 'If you guess 10 incorrect letters, you LOSE'
   puts 'Choose 1) to start a new game'
   puts 'Choose 2) to load an existing game'
-  print "\n"
-end
-
-def new_game
-  words = File.readlines('5desk.txt')
-  game = Game.new(words)
-  game.choose_word
-  game.play
-end
-
-def save_game(game)
-  filename = prompt_save
-  return false unless filename
-
-  serialized = YAML.dump(game)
-  File.open("saved_games/#{filename}.yaml", 'w') { |file| file.write serialized }
 end
 
 def load_game
@@ -34,6 +18,28 @@ def load_game
   unserialized_game = YAML.safe_load(serialized_game)
   serialized_game.close
   unserialized_game
+end
+
+def player_game_choice
+  choice = gets.chomp
+  until %w[1 2].include?(choice)
+    puts 'Please enter 1 (start new game) or 2 (load saved game)'
+    choice = gets.chomp
+  end
+  choice
+end
+
+def new_game
+  starting_message
+  words = File.readlines('5desk.txt')
+  choice = player_game_choice
+  if choice == '1'
+    game = Game.new(words)
+    game.choose_word
+    game.play
+  else
+    load_game
+  end
 end
 
 new_game

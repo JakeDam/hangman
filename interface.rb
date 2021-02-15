@@ -22,7 +22,9 @@ module Display
   def player_guess
     puts 'Enter a letter to guess: '
     while (guess = gets.chomp.downcase)
-      if guess !~ /^[a-z]*$/
+      if guess == 'save'
+        save_game
+      elsif guess !~ /^[a-z]*$/
         puts 'Please enter only letters.'
       elsif guess.length > 1
         puts 'Please enter only a single letter.'
@@ -67,4 +69,3 @@ def prompt_load
 rescue StandardError
   retry
 end
-

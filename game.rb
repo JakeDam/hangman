@@ -13,6 +13,16 @@ class Game
     @display_letters = []
   end
 
+  def save_game
+    filename = prompt_save
+    return false unless filename
+
+    serialized = YAML.dump(self)
+    File.open("saved_games/#{filename}.yaml", 'w') { |file| file.write serialized }
+    puts 'Game Saved'
+    exit
+  end
+
   def choose_word
     while (word = @words.sample)
       next unless word.length > 4 && word.length < 13
