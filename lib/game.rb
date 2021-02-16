@@ -19,7 +19,7 @@ class Game
     # return false unless filename
 
     yaml = YAML.dump(self)
-    File.open("saved_games/#{filename}.yaml", 'w') { |file| file.write(yaml) }
+    File.open("../saved_games/#{filename}.yaml", 'w') { |file| file.write(yaml) }
     puts 'Game Saved'
     exit
   end

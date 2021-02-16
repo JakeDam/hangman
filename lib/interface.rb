@@ -43,7 +43,7 @@ end
 
 def prompt_save
   begin
-    filenames = Dir.entries('saved_games')
+    filenames = Dir.entries('../saved_games')
     puts 'Enter savefile name: '
     filename = gets.chomp
     raise "#{filename} already exists." if filenames.include?(filename)
