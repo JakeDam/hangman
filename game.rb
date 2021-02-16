@@ -15,9 +15,9 @@ class Game
   end
 
   def save_game
-    filename = prompt_save
+    # filename = prompt_save
     # return false unless filename
-
+    filename = 'testfile'
     yaml = YAML.dump(self)
     puts yaml
     File.open(File.join(Dir.pwd, "saved_games/#{filename}.yaml"), 'w+') { |file| file.write(yaml) }
