@@ -31,10 +31,9 @@ end
 
 def new_game
   starting_message
-  words = File.readlines('5desk.txt')
   choice = player_game_choice
   if choice == '1'
-    game = Game.new(words)
+    game = Game.new
     game.choose_word
     game.play
   else
