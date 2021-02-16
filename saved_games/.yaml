@@ -1,10 +1,10 @@
 --- !ruby/object:Game
 guesses: 10
-guessed_letters: []
+guessed_letters:
+- s
 incorrect_letters: []
 display_letters:
-- _
-- _
+- s
 - _
 - _
 - _
@@ -13,12 +13,11 @@ display_letters:
 - _
 - _
 secret_word:
-- p
-- r
-- o
 - s
 - c
-- r
+- a
+- t
+- h
 - i
-- b
-- e
+- n
+- g
