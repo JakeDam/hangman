@@ -1,7 +1,9 @@
 --- !ruby/object:Game
-guesses: 10
-guessed_letters: []
-incorrect_letters: []
+guesses: 9
+guessed_letters:
+- j
+incorrect_letters:
+- j
 display_letters:
 - _
 - _
@@ -9,14 +11,10 @@ display_letters:
 - _
 - _
 - _
-- _
-- _
 secret_word:
-- a
-- s
-- t
-- e
-- r
+- c
 - o
-- i
-- d
+- n
+- s
+- u
+- l

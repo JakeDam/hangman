@@ -55,7 +55,7 @@ def prompt_save
       input = gets.chomp.downcase
     end
   end
-  input == 'y' ? filename : nil
+  filename
 end
 
 def prompt_load
